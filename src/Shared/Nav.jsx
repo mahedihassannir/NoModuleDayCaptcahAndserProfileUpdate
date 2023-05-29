@@ -1,7 +1,35 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { contexM } from "../Authentication/AuthProvider";
 
+{/* TODO : unpin this */ }
+
+import { FaCartPlus } from "react-icons/fa";
+import useCart from "../Hooks/UseCart";
 
 const Nav = () => {
+
+
+
+
+    const [cart] = useCart()
+    console.log('this the cart length', cart);
+
+
+    const { user, loader, SingINUSER } = useContext(contexM)
+
+    const handleLogout = () => {
+
+        SingINUSER()
+            .then(() => {
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+    }
+
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -17,10 +45,47 @@ const Nav = () => {
                     <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu flex gap-5 menu-horizontal px-1">
 
                         <Link to="/">Home</Link>
-                        
+
+                        <Link to="/Register">Register</Link>
+                        {
+                            user ? <>
+                                <button onClick={handleLogout}>Logout</button>
+                            </>
+                                : <>
+                                    <Link to="/Login">Login</Link>
+
+                                </>
+                        }
+
+
+                        {
+                            user &&
+                            <>
+
+                                <img className="w-20 h-20 rounded-full " src={user.photoURL} alt="" />
+                                <p>{user.email}</p>
+                            </>
+                        }
+
+                        <div>
+                            <Link to="/CardPage">
+
+                                {/* TODO : unpin this */}
+
+                                <button className="btn btn-active btn-secondary"> <FaCartPlus className="mr-2">yar</FaCartPlus>
+
+                                    {
+                                        cart?.length || 0
+
+                                    }
+                                </button>
+                            </Link>
+                        </div>
+
+
                     </ul>
                 </div>
                 <div className="navbar-end">
