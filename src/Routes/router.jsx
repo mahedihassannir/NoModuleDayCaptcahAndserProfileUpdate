@@ -7,6 +7,7 @@ import Home from "../Pages/Home";
 import Register from "../Login/Register";
 import Login from "../Login/Login";
 import CartPage from "../Pages/CartPage";
+import PrivateRoute from "../Private/PrivateRoute";
 
 
 const router = createBrowserRouter(
@@ -17,7 +18,7 @@ const router = createBrowserRouter(
             children: [
                 {
                     path: '/',
-                    element: <Home></Home>
+                    element: <PrivateRoute><Home></Home></PrivateRoute>
                 },
 
                 {
@@ -30,7 +31,7 @@ const router = createBrowserRouter(
                 },
                 {
                     path: 'CardPage',
-                    element: <CartPage></CartPage>
+                    element: <PrivateRoute><CartPage></CartPage></PrivateRoute>
                 },
 
             ]

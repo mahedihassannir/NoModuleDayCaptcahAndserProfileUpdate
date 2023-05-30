@@ -60,7 +60,7 @@ const AuthProvider = ({ children }) => {
 
             // here is the  loader 
 
-            SetLoader(true)
+            SetLoader(false)
 
             console.log('user', Watch);
 

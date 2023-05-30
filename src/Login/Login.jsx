@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 
@@ -15,6 +15,14 @@ const Login = () => {
 
 
     const [Disable, Setdisable] = useState(true)
+
+
+
+    const location = useLocation()
+
+    const frrom = location.state?.from?.pathname || '/'
+
+
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -45,7 +53,7 @@ const Login = () => {
 
                 }
 
-                navigate('/')
+                navigate(frrom)
 
             })
             .catch(err => {
@@ -108,7 +116,7 @@ const Login = () => {
                             </Link>
 
                             <div className="form-control mt-6">
-                                <button disabled={Disable} type="submit" className="btn btn-primary">Login</button>
+                                <button disabled={false} type="submit" className="btn btn-primary">Login</button>
                             </div>
                         </form>
                     </div>

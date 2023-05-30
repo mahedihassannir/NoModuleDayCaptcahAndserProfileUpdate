@@ -1,5 +1,12 @@
 import useCart from "../Hooks/UseCart";
 
+// here is the sweetalert2 import 
+
+import Swal from 'sweetalert2'
+
+// here is the sweetalert2 import 
+
+
 const CartPage = () => {
 
     const [cart, refetch] = useCart()
@@ -10,13 +17,20 @@ const CartPage = () => {
             method: "DELETE",
 
 
+
         })
             .then(res => res.json())
             .then(data => {
 
                 if (data.deletedCount) {
-                    alert("delete successfull")
                     refetch()
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'deleted successfully',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
                 }
 
                 console.log(data);

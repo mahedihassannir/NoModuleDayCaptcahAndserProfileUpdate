@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { contexM } from "../Authentication/AuthProvider";
 import useCart from "../Hooks/UseCart";
+import Swal from "sweetalert2";
 
 
 
@@ -46,7 +47,13 @@ const Home = () => {
                     console.log(data);
                     refetch()
                     if (data.insertedId) {
-                        alert("your cart is added")
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'deleted successfully',
+                            showConfirmButton: false,
+                            timer: 700
+                        })
                     }
                 })
 
