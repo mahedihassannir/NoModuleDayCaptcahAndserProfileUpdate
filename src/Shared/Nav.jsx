@@ -9,9 +9,6 @@ import useCart from "../Hooks/UseCart";
 
 const Nav = () => {
 
-
-
-
     const [cart] = useCart()
     console.log('this the cart length', cart);
 
@@ -48,6 +45,7 @@ const Nav = () => {
                     <ul className="menu flex gap-5 menu-horizontal px-1">
 
                         <Link to="/">Home</Link>
+                        <Link to="/Loginm">Login2</Link>
 
                         <Link to="/Register">Register</Link>
                         {

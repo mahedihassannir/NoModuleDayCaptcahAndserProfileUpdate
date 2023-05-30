@@ -8,6 +8,7 @@ import Register from "../Login/Register";
 import Login from "../Login/Login";
 import CartPage from "../Pages/CartPage";
 import PrivateRoute from "../Private/PrivateRoute";
+import LoginF from "../Components/LoginF";
 
 
 const router = createBrowserRouter(
@@ -28,6 +29,10 @@ const router = createBrowserRouter(
                 {
                     path: 'Login',
                     element: <Login></Login>
+                },
+                {
+                    path: 'Loginm',
+                    element: <LoginF></LoginF>
                 },
                 {
                     path: 'CardPage',
